@@ -10,6 +10,7 @@ https://ziyi-website.vercel.app
 - Iterated further with custom changes (half manual, half Copilot-assisted).
 - Added a Playground section and refined layout/navigation logic.
 - The Contact page submits data to Supabase.
+- Implemented a Supabase Edge Function + Database Webhook to send instant Bark notifications to my iPhone after contact inserts.
 
 ### Features
 
@@ -17,6 +18,7 @@ https://ziyi-website.vercel.app
 - Responsive layout with smooth navigation between sections.
 - Theme support and modern UI components.
 - Contact form connected to Supabase for data submission.
+- Real-time iPhone push notifications via Supabase Edge Function, Database Webhook, and Bark.
 
 ### Tech Stack
 
