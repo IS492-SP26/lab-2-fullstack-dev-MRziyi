@@ -998,7 +998,7 @@ export function PlaygroundSection() {
           }`}
         >
           {/* Left: Workspace + Radar */}
-          <div className="lg:col-span-2 flex flex-col gap-4">
+          <div className="lg:col-span-2 grid grid-cols-2 gap-4 lg:flex lg:flex-col">
             {/* Spatial workspace */}
             <div className="glass rounded-xl p-3">
               <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium mb-2">
@@ -1013,7 +1013,7 @@ export function PlaygroundSection() {
             </div>
 
             {/* Radar chart */}
-            <div className="glass rounded-xl p-3">
+            <div className="glass rounded-xl p-3 flex flex-col">
               <div className="flex items-center justify-between mb-1">
                 <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-medium">
                   Preference Balance
@@ -1024,7 +1024,9 @@ export function PlaygroundSection() {
                   </span>
                 )}
               </div>
-              <RadarChart scores={scores} prevScores={prevScores} />
+              <div className="flex flex-1 items-center justify-center">
+                <RadarChart scores={scores} prevScores={prevScores} />
+              </div>
             </div>
           </div>
 

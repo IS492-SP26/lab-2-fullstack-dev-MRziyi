@@ -26,34 +26,34 @@ function ChipIcon({ type }: { type: string }) {
     case "brain":
       return (
         <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2a8 8 0 0 0-8 8c0 3.4 2.1 6.3 5 7.5V20h6v-2.5c2.9-1.2 5-4.1 5-7.5a8 8 0 0 0-8-8z"/>
-          <path d="M12 2v4M8 6l2 2M16 6l-2 2M12 12v4"/>
+          <path d="M12 2a8 8 0 0 0-8 8c0 3.4 2.1 6.3 5 7.5V20h6v-2.5c2.9-1.2 5-4.1 5-7.5a8 8 0 0 0-8-8z" />
+          <path d="M12 2v4M8 6l2 2M16 6l-2 2M12 12v4" />
         </svg>
       );
     case "bot":
       return (
         <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="11" width="18" height="10" rx="2"/>
-          <circle cx="12" cy="5" r="2"/>
-          <path d="M12 7v4"/>
-          <line x1="8" y1="16" x2="8" y2="16"/>
-          <line x1="16" y1="16" x2="16" y2="16"/>
+          <rect x="3" y="11" width="18" height="10" rx="2" />
+          <circle cx="12" cy="5" r="2" />
+          <path d="M12 7v4" />
+          <line x1="8" y1="16" x2="8" y2="16" />
+          <line x1="16" y1="16" x2="16" y2="16" />
         </svg>
       );
     case "glasses":
       return (
         <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="6" cy="15" r="4"/>
-          <circle cx="18" cy="15" r="4"/>
-          <path d="M10 15h4"/>
-          <path d="M2 15h0M22 15h0"/>
+          <circle cx="6" cy="15" r="4" />
+          <circle cx="18" cy="15" r="4" />
+          <path d="M10 15h4" />
+          <path d="M2 15h0M22 15h0" />
         </svg>
       );
     case "chart":
       return (
         <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M3 3v18h18"/>
-          <path d="M7 16l4-4 4 4 6-6"/>
+          <path d="M3 3v18h18" />
+          <path d="M7 16l4-4 4 4 6-6" />
         </svg>
       );
     default:
@@ -134,7 +134,7 @@ function AgentNodes() {
       ctx.stroke();
 
       ctx.font = "10px sans-serif";
-      ctx.fillStyle = "rgba(0, 188, 212, 0.6)";
+      ctx.fillStyle = "rgba(0, 188, 212, 0.8)";
       ctx.textAlign = "center";
       ctx.fillText(n.label, n.x, n.y - 16);
     }
@@ -221,12 +221,19 @@ export function HeroSection() {
         <div className="absolute bottom-1/4 right-1/4 h-80 w-80 rounded-full bg-primary/8 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-4 pt-20 pb-12 lg:flex-row lg:items-center lg:gap-16 lg:px-6">
-        {/* Left content */}
+      {/* 修改点 1: 父容器添加 items-center 实现水平居中 
+      */}
+      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-4 pt-20 pb-12 lg:flex-row lg:items-center lg:gap-16 lg:px-6">
+
+        {/* 修改点 2: 
+           - 移除 flex-1，改为 lg:flex-1 (防止移动端撑满高度把头像顶到底部)
+           - 添加 w-full lg:w-auto (确保宽度正常)
+           - 添加 flex flex-col items-center text-center (内容水平居中)
+           - 添加 lg:items-start lg:text-left (大屏恢复左对齐)
+        */}
         <div
-          className={`flex-1 transition-all duration-700 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`w-full lg:w-auto lg:flex-1 flex flex-col items-center text-center lg:items-start lg:text-left transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
         >
           <p className="mb-3 text-sm font-medium uppercase tracking-wider text-muted-foreground">
             Welcome to my research lab
@@ -239,13 +246,13 @@ export function HeroSection() {
             <TypingRole />
           </div>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            I build immersive systems where humans and AI co-plan, visualize, and interact. 
-            My work spans VR/AR interfaces, LLM agent orchestration, and interaction design, 
+            I build immersive systems where humans and AI co-plan, visualize, and interact.
+            My work spans VR/AR interfaces, LLM agent orchestration, and interaction design,
             grounded in rigorous user studies.
           </p>
 
-          {/* CTA buttons */}
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          {/* CTA buttons - 增加 justify-center 用于移动端居中按钮 */}
+          <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3">
             <Button size="lg" asChild>
               <a href="#research">
                 Explore Research
@@ -264,15 +271,14 @@ export function HeroSection() {
             </Button>
           </div>
 
-          {/* Interest chips */}
-          <div className="mt-8 flex flex-wrap gap-2">
+          {/* Interest chips - 增加 justify-center */}
+          <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-2">
             {chips.map((chip, i) => (
               <Badge
                 key={chip.label}
                 variant="secondary"
-                className={`gap-1.5 px-3 py-1.5 text-sm transition-all duration-300 ${
-                  visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
+                className={`gap-1.5 px-3 py-1.5 text-sm transition-all duration-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                  }`}
                 style={{ transitionDelay: `${600 + i * 100}ms` }}
               >
                 <ChipIcon type={chip.icon} />
@@ -284,9 +290,8 @@ export function HeroSection() {
 
         {/* Right: Portrait + Agent Nodes */}
         <div
-          className={`relative mt-12 flex flex-shrink-0 items-center justify-center lg:mt-0 transition-all duration-700 delay-300 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`relative mt-12 flex flex-shrink-0 items-center justify-center lg:mt-0 transition-all duration-700 delay-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
         >
           <div className="relative">
             {/* Holographic frame */}

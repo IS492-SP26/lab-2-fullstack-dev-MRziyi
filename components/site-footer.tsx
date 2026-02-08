@@ -5,8 +5,7 @@ import { ExternalLink } from "lucide-react";
 const socials = [
   { label: "Google Scholar", href: "#" },
   { label: "GitHub", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "X / Twitter", href: "#" },
+  { label: "LinkedIn", href: "#" }
 ];
 
 export function SiteFooter() {

@@ -1,29 +1,50 @@
 "use client";
 
-import React from "react"
-
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { Mail, MapPin, Phone, Send, ExternalLink } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 const socials = [
   { label: "Google Scholar", href: "#" },
   { label: "GitHub", href: "#" },
   { label: "LinkedIn", href: "#" },
-  { label: "X / Twitter", href: "#" },
 ];
 
 export function ContactSection() {
   const ref = useRef<HTMLElement>(null);
   const visible = useScrollReveal(ref);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [topic, setTopic] = useState("");
+  const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const { error } = await supabase.from("Contact").insert({
+      name,
+      email,
+      topic,
+      message,
+    });
+
+    if (error) {
+      console.error(error);
+      return;
+    }
+
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
+
+    // Clear form
+    setName("");
+    setEmail("");
+    setTopic("Default");
+    setMessage("");
   };
 
   return (
@@ -38,7 +59,7 @@ export function ContactSection() {
             Contact
           </p>
           <h2 className="mt-2 text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            {"Let's build something immersive together."}
+            {"Let's build something interesting together."}
           </h2>
           <p className="mt-3 text-base text-muted-foreground">
             Open to research collaborations and internships.
@@ -68,6 +89,8 @@ export function ContactSection() {
                       required
                       className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                       placeholder="Your name"
+                      onChange={(e) => setName(e.target.value)}
+                      value={name}
                     />
                   </div>
                   <div>
@@ -83,6 +106,8 @@ export function ContactSection() {
                       required
                       className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                       placeholder="you@example.com"
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
                     />
                   </div>
                 </div>
@@ -96,6 +121,8 @@ export function ContactSection() {
                   <select
                     id="topic"
                     className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                    onChange={(e) => setTopic(e.target.value)}
+                    value={topic}
                   >
                     <option value="">Select a topic...</option>
                     <option value="research">Research</option>
@@ -117,6 +144,8 @@ export function ContactSection() {
                     rows={4}
                     className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                     placeholder="Tell me about your idea..."
+                    onChange={(e) => setMessage(e.target.value)}
+                    value={message}
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={submitted}>

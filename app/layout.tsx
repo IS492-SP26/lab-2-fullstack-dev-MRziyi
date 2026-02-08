@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ziyi Zhang | HCI Researcher & XR Builder",
     description:
-      "Building immersive systems where humans and AI co-plan, visualize, and interact.",
+      "Building  systems where humans and AI co-plan, visualize, and interact.",
     type: "website",
   },
 };

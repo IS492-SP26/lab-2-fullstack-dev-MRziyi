@@ -49,7 +49,7 @@ export function SiteHeader() {
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary font-mono text-sm font-bold text-primary-foreground">
             ZZ
           </span>
-          <span className="hidden font-semibold text-foreground sm:inline">
+          <span className="hidden font-semibold text-foreground lg:inline">
             Ziyi Zhang
           </span>
         </a>
