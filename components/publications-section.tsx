@@ -11,16 +11,26 @@ type FilterType = "All" | "CHI" | "Journal" | "Security" | "Systems" | "Patent";
 const publications = [
   {
     title: "Virtual Minds, Real Work: LLM-Powered Preference-Based Planning through Spatial Multi-Agent-Human Collaboration",
-    authors: "Ziyi Zhang, Xin Yi, Hantao Zhao, Zitong Dai",
+    authors: "Ziyi Zhang, Xin Yi, Zitong Dai, Xuewen Yu, Shuning Zhang, Bo Liu, Jiuxin Cao, Hantao Zhao",
     venue: "CHI '26: Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems",
     year: 2026,
     month: "Sep 2025",
     tags: ["CHI"] as FilterType[],
-    bibtex: `@inproceedings{zhang2026virtualmindsmultiagent,
-  title={Virtual Minds, Real Work: LLM-Powered Preference-Based Planning through Spatial Multi-Agent-Human Collaboration},
-  author={Zhang, Ziyi and Yi, Xin and Zhao, Hantao and Dai, Zitong},
-  booktitle={CHI '26},
-  year={2026}
+    pdf: "/pdfs/virtualMind.pdf",
+    doi: "https://dl.acm.org/doi/10.1145/3772318.3791926",
+    bibtex: `@inproceedings{10.1145/3772318.3791926,
+author = {Zhang, Ziyi and Yi, Xin and Dai, Zitong and Yu, Xuewen and Zhang, Shuning and Liu, Bo and Cao, Jiuxin and Zhao, Hantao},
+title = {Virtual Minds, Real Work: LLM-Powered Preference-Based Planning through Spatial Multi-Agent-Human Collaboration},
+year = {2026},
+isbn = {9798400722783},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3772318.3791926},
+doi = {10.1145/3772318.3791926},
+booktitle = {Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems},
+articleno = {118},
+numpages = {20},
+series = {CHI '26}
 }`,
   },
   {
@@ -30,6 +40,8 @@ const publications = [
     year: 2024,
     month: "Sep 2023",
     tags: ["CHI"] as FilterType[],
+    pdf: undefined as string | undefined,
+    doi: undefined as string | undefined,
     bibtex: `@inproceedings{chen2024enhancingprivacyar,
   title={Enhancing Privacy Awareness in Buildings through Augmented Reality Technology},
   author={Chen, Liru and Zhang, Ziyi and Zhao, Hantao},
@@ -39,44 +51,65 @@ const publications = [
   },
   {
     title: "ARena of Privacy: Exploring Augmented Reality in Enhancing Smart Home Privacy Awareness and Control",
-    authors: "Hantao Zhao, Xin Yi, Liru Chen, Ziyi Zhang",
+    authors: "Hantao Zhao, Xin Yi, Liru Chen, Ziyi Zhang, Wenze Ren, Xiaomeng Shi, Bo Liu, Jiuxin Cao",
     venue: "International Journal of Human-Computer Interaction (IJHCI)",
     year: 2025,
     month: "Aug 2025",
     tags: ["Journal"] as FilterType[],
-    bibtex: `@article{zhao2025arenaprivacy,
-  title={ARena of Privacy: Exploring Augmented Reality in Enhancing Smart Home Privacy Awareness and Control},
-  author={Zhao, Hantao and Yi, Xin and Chen, Liru and Zhang, Ziyi},
-  journal={IJHCI},
-  year={2025}
+    pdf: "/pdfs/arena.pdf",
+    doi: "https://doi.org/10.1080/10447318.2025.2564276",
+    bibtex: `@article{Zhao27102025,
+author = {Hantao Zhao and Xin Yi and Liru Chen and Ziyi Zhang and Wenze Ren and Xiaomeng Shi and Bo Liu and Jiuxin Cao},
+title = {ARena of Privacy: Exploring Augmented Reality in Enhancing Smart Home Privacy Awareness and Control},
+journal = {International Journal of Human–Computer Interaction},
+volume = {0},
+number = {0},
+pages = {1--30},
+year = {2025},
+publisher = {Taylor & Francis},
+doi = {10.1080/10447318.2025.2564276},
+URL = {https://doi.org/10.1080/10447318.2025.2564276}
 }`,
   },
   {
     title: "Through Their Eyes: User Perceptions on Sensitive Attribute Inference of Social Media Videos by Visual Language Models",
-    authors: "Shuning Zhang, Gengrui Zhang, Yibo Meng, Ziyi Zhang",
-    venue: "CCS '25: ACM SIGSAC Conference on Computer and Communications Security, HAIPS Workshop",
+    authors: "Shuning Zhang, Gengrui Zhang, Yibo Meng, Ziyi Zhang, Hantao Zhao, Xin Yi, Hewu Li",
+    venue: "HAIPS '25 @ CCS: Workshop on Human Aspects of Information Privacy & Security",
     year: 2025,
     month: "Aug 2025",
     tags: ["Security"] as FilterType[],
-    bibtex: `@inproceedings{zhang2025throughthereyes,
-  title={Through Their Eyes: User Perceptions on Sensitive Attribute Inference of Social Media Videos by Visual Language Models},
-  author={Zhang, Shuning and Zhang, Gengrui and Meng, Yibo and Zhang, Ziyi},
-  booktitle={CCS '25 HAIPS Workshop},
-  year={2025}
+    pdf: "/pdfs/eye.pdf",
+    doi: "https://dl.acm.org/doi/10.1145/3733816.3760751",
+    bibtex: `@inproceedings{10.1145/3733816.3760751,
+author = {Zhang, Shuning and Zhang, Gengrui and Meng, Yibo and Zhang, Ziyi and Zhao, Hantao and Yi, Xin and Li, Hewu},
+title = {Through Their Eyes: User Perceptions on Sensitive Attribute Inference of Social Media Videos by Visual Language Models},
+year = {2025},
+isbn = {9798400719059},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3733816.3760751},
+doi = {10.1145/3733816.3760751},
+pages = {20–32},
+numpages = {13},
+series = {HAIPS '25}
 }`,
   },
   {
     title: "Cooperative and Autonomous Mapping for Heterogeneous NAVs",
-    authors: "Ruiwen Xu, Yongtao Ou, Hanjie Yu, Ziyi Zhang",
+    authors: "Ruiwen Xu, Yongtao Ou, Hanjie Yu, Ziyi Zhang, Feng Shan, Weiwei Wu, Junzhou Luo",
     venue: "2023 IEEE 20th International Conference on Mobile Ad Hoc and Smart Systems (MASS)",
     year: 2023,
     month: "Mar 2023",
     tags: ["Systems"] as FilterType[],
-    bibtex: `@inproceedings{xu2023cooperativemapping,
+    pdf: "/pdfs/uav.pdf",
+    doi: "https://doi.org/10.1109/MASS58611.2023.00073",
+    bibtex: `@inproceedings{xu2023cooperative,
   title={Cooperative and Autonomous Mapping for Heterogeneous NAVs},
-  author={Xu, Ruiwen and Ou, Yongtao and Yu, Hanjie and Zhang, Ziyi},
-  booktitle={IEEE MASS 2023},
-  year={2023}
+  author={Xu, Ruiwen and Ou, Yongtao and Yu, Hanjie and Zhang, Ziyi and Shan, Feng and Wu, Weiwei and Luo, Junzhou},
+  booktitle={2023 IEEE 20th International Conference on Mobile Ad Hoc and Smart Systems (MASS)},
+  pages={539--547},
+  year={2023},
+  organization={IEEE}
 }`,
   },
   {
@@ -86,6 +119,8 @@ const publications = [
     year: 2023,
     month: "Nov 2023",
     tags: ["Patent"] as FilterType[],
+    pdf: undefined as string | undefined,
+    doi: undefined as string | undefined,
     bibtex: `@misc{zhang2023patentgimbal,
   title={Vision-Based Gimbal Control Method for Target Striking UAVs},
   author={Zhang, Ziyi and Liu, Haoyang and Shan, Feng},
@@ -247,10 +282,14 @@ export function PublicationsSection() {
                 </div>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
-                <Button size="sm" variant="outline" className="text-xs h-7 bg-transparent">
-                  <FileText className="mr-1 h-3 w-3" />
-                  PDF
-                </Button>
+                {pub.pdf && (
+                  <Button size="sm" variant="outline" className="text-xs h-7 bg-transparent" asChild>
+                    <a href={pub.pdf} target="_blank" rel="noopener noreferrer">
+                      <FileText className="mr-1 h-3 w-3" />
+                      PDF
+                    </a>
+                  </Button>
+                )}
                 <Button
                   size="sm"
                   variant="outline"
@@ -269,10 +308,14 @@ export function PublicationsSection() {
                     </>
                   )}
                 </Button>
-                <Button size="sm" variant="ghost" className="text-xs h-7">
-                  <ExternalLink className="mr-1 h-3 w-3" />
-                  DOI
-                </Button>
+                {pub.doi && (
+                  <Button size="sm" variant="ghost" className="text-xs h-7" asChild>
+                    <a href={pub.doi} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="mr-1 h-3 w-3" />
+                      DOI
+                    </a>
+                  </Button>
+                )}
               </div>
               </div>
             );

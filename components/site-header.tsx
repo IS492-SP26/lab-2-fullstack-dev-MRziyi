@@ -84,9 +84,11 @@ export function SiteHeader() {
               )}
             </Button>
           )}
-          <Button size="sm" className="hidden sm:flex">
-            <Download className="mr-1 h-3.5 w-3.5" />
-            Download CV
+          <Button size="sm" className="hidden sm:flex" asChild>
+            <a href="/pdfs/ZiyiZhang_CV.pdf" target="_blank" rel="noopener noreferrer">
+              <Download className="mr-1 h-3.5 w-3.5" />
+              Download CV
+            </a>
           </Button>
           <Button
             variant="ghost"
@@ -118,9 +120,11 @@ export function SiteHeader() {
                 {item.label}
               </a>
             ))}
-            <Button size="sm" className="mt-2 w-full sm:hidden">
-              <Download className="mr-1 h-3.5 w-3.5" />
-              Download CV
+            <Button size="sm" className="mt-2 w-full sm:hidden" asChild>
+              <a href="/pdfs/ZiyiZhang_CV.pdf" target="_blank" rel="noopener noreferrer">
+                <Download className="mr-1 h-3.5 w-3.5" />
+                Download CV
+              </a>
             </Button>
           </div>
         </nav>

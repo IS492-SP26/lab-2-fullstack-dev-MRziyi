@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import { ChevronDown, FileText, ExternalLink, Play } from "lucide-react";
+import { ChevronDown, FileText, ExternalLink, Play, Copy, Check } from "lucide-react";
 import Image from "next/image";
 
 const projects = [
@@ -29,6 +29,23 @@ const projects = [
       { phase: "Study", detail: "Controlled user studies comparing against LLM-only baselines." },
       { phase: "Results", detail: "Significantly improved planning quality, engagement, and satisfaction." },
     ],
+    paper: "/pdfs/virtualMind.pdf",
+    doi: "https://dl.acm.org/doi/10.1145/3772318.3791926",
+    demo: "https://dl.acm.org/doi/suppl/10.1145/3772318.3791926/suppl_file/3772318.3791926-supplemental-material-2.mp4",
+    bibtex: `@inproceedings{10.1145/3772318.3791926,
+author = {Zhang, Ziyi and Yi, Xin and Dai, Zitong and Yu, Xuewen and Zhang, Shuning and Liu, Bo and Cao, Jiuxin and Zhao, Hantao},
+title = {Virtual Minds, Real Work: LLM-Powered Preference-Based Planning through Spatial Multi-Agent-Human Collaboration},
+year = {2026},
+isbn = {9798400722783},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3772318.3791926},
+doi = {10.1145/3772318.3791926},
+booktitle = {Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems},
+articleno = {118},
+numpages = {20},
+series = {CHI '26}
+}`,
     flagship: true,
   },
   {
@@ -51,6 +68,21 @@ const projects = [
       { phase: "Study", detail: "Controlled comparison against a React web-based privacy dashboard." },
       { phase: "Results", detail: "Improved accuracy, understanding, and reduced cognitive workload." },
     ],
+    paper: "/pdfs/arena.pdf",
+    doi: "https://doi.org/10.1080/10447318.2025.2564276",
+    demo: "https://github.com/zhthantao/ARenaSupplementary/blob/main/Video.mp4",
+    bibtex: `@article{Zhao27102025,
+author = {Hantao Zhao and Xin Yi and Liru Chen and Ziyi Zhang and Wenze Ren and Xiaomeng Shi and Bo Liu and Jiuxin Cao},
+title = {ARena of Privacy: Exploring Augmented Reality in Enhancing Smart Home Privacy Awareness and Control},
+journal = {International Journal of Human–Computer Interaction},
+volume = {0},
+number = {0},
+pages = {1--30},
+year = {2025},
+publisher = {Taylor & Francis},
+doi = {10.1080/10447318.2025.2564276},
+URL = {https://doi.org/10.1080/10447318.2025.2564276}
+}`,
     flagship: false,
   },
   {
@@ -73,6 +105,17 @@ const projects = [
       { phase: "Study", detail: "Live flight tests and competition evaluation." },
       { phase: "Results", detail: "National First Prize, published paper, and patent filed." },
     ],
+    paper: "/pdfs/uav.pdf",
+    doi: "https://doi.org/10.1109/MASS58611.2023.00073",
+    demo: undefined as string | undefined,
+    bibtex: `@inproceedings{xu2023cooperative,
+  title={Cooperative and Autonomous Mapping for Heterogeneous NAVs},
+  author={Xu, Ruiwen and Ou, Yongtao and Yu, Hanjie and Zhang, Ziyi and Shan, Feng and Wu, Weiwei and Luo, Junzhou},
+  booktitle={2023 IEEE 20th International Conference on Mobile Ad Hoc and Smart Systems (MASS)},
+  pages={539--547},
+  year={2023},
+  organization={IEEE}
+}`,
     flagship: false,
   },
 ];
@@ -92,6 +135,14 @@ function ProjectCard({
 }) {
   const [expanded, setExpanded] = useState(false);
   const [showLog, setShowLog] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyBibtex = () => {
+    if (!project.bibtex) return;
+    navigator.clipboard.writeText(project.bibtex);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <Card
@@ -218,31 +269,44 @@ function ProjectCard({
 
         {/* Action buttons */}
         <div className="mt-4 flex flex-wrap gap-2">
-          <Button size="sm" variant="outline" className="text-xs h-8 bg-transparent">
-            <FileText className="mr-1 h-3 w-3" />
-            View Paper
-          </Button>
-          <Button size="sm" variant="outline" className="text-xs h-8 bg-transparent">
-            <Play className="mr-1 h-3 w-3" />
-            Watch Demo
-          </Button>
+          {project.paper && (
+            <Button size="sm" variant="outline" className="text-xs h-8 bg-transparent" asChild>
+              <a href={project.paper} target="_blank" rel="noopener noreferrer">
+                <FileText className="mr-1 h-3 w-3" />
+                View Paper
+              </a>
+            </Button>
+          )}
+          {project.demo && (
+            <Button size="sm" variant="outline" className="text-xs h-8 bg-transparent" asChild>
+              <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                <Play className="mr-1 h-3 w-3" />
+                Watch Demo
+              </a>
+            </Button>
+          )}
+          {project.doi && (
+            <Button size="sm" variant="outline" className="text-xs h-8 bg-transparent" asChild>
+              <a href={project.doi} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="mr-1 h-3 w-3" />
+                DOI
+              </a>
+            </Button>
+          )}
+          {project.bibtex && (
+            <Button size="sm" variant="outline" className="text-xs h-8 bg-transparent" onClick={handleCopyBibtex}>
+              {copied ? <Check className="mr-1 h-3 w-3" /> : <Copy className="mr-1 h-3 w-3" />}
+              {copied ? "Copied" : "BibTeX"}
+            </Button>
+          )}
           {project.title === "Virtual Minds, Real Work" && (
-            <Button
-              size="sm"
-              variant="outline"
-              className="text-xs h-8 bg-transparent"
-              asChild
-            >
+            <Button size="sm" variant="outline" className="text-xs h-8 bg-transparent" asChild>
               <a href="#playground">
                 <Play className="mr-1 h-3 w-3" />
                 Go to Playground
               </a>
             </Button>
           )}
-          <Button size="sm" variant="ghost" className="text-xs h-8">
-            <ExternalLink className="mr-1 h-3 w-3" />
-            Case Study
-          </Button>
         </div>
       </CardContent>
     </Card>

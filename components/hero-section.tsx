@@ -259,9 +259,11 @@ export function HeroSection() {
                 <ArrowDown className="ml-1 h-4 w-4" />
               </a>
             </Button>
-            <Button variant="outline" size="lg">
-              <Download className="mr-1 h-4 w-4" />
-              Download CV
+            <Button variant="outline" size="lg" asChild>
+              <a href="/pdfs/ZiyiZhang_CV.pdf" target="_blank" rel="noopener noreferrer">
+                <Download className="mr-1 h-4 w-4" />
+                Download CV
+              </a>
             </Button>
             <Button variant="ghost" size="lg" asChild>
               <a href="#contact" className="text-muted-foreground">
@@ -300,7 +302,7 @@ export function HeroSection() {
               <div className="absolute -inset-1 rounded-2xl bg-primary/5" />
               <div className="absolute inset-2 overflow-hidden rounded-xl">
                 <Image
-                  src="/images/portrait.jpg"
+                  src="/images/portrait.jpeg"
                   alt="Ziyi Zhang portrait"
                   fill
                   className="object-cover"
@@ -315,7 +317,7 @@ export function HeroSection() {
             </div>
 
             {/* Agent nodes canvas */}
-            <AgentNodes />
+            {/* <AgentNodes /> */}
           </div>
         </div>
       </div>
